@@ -72,7 +72,7 @@ bool readVLFeatFileAscii (const std::string& filepath,
                           cv::Mat& descriptors)
 {
     try {
-        ifstream ifs (filepath.c_str());
+        std::ifstream ifs (filepath.c_str());
         if (!ifs) throw runtime_error("evg::readVLFeatFile: cannot open file of vlfeat format");
         
         // clear
@@ -135,7 +135,7 @@ bool readVLFeatFileBin (const std::string& filepath,
     const int DescrSize = 128;
     
     try {
-        ifstream ifs (filepath.c_str(), ios::binary);
+        std::ifstream ifs (filepath.c_str(), ios::binary);
         if (!ifs) throw runtime_error("evg::readVLFeatFile: cannot open file of vlfeat format");
         
         // clear
@@ -203,7 +203,7 @@ bool writeVLFeatFileAscii (const std::string& filepath,
         if (descriptors.type() != CV_8U)
             throw runtime_error("evg::writeVLFeatFileAscii: descriptors Mat type is not CV_8U");
     
-        ofstream ofs (filepath.c_str());
+        std::ofstream ofs (filepath.c_str());
         if (!ofs) throw runtime_error("evg::writeVLFeatFileAscii: cannot open file for ascii writing");
         
         for (int iKey = 0; iKey < descriptors.rows; ++iKey)
@@ -237,7 +237,7 @@ bool writeVLFeatFileBin (const std::string& filepath,
         if (keypoints.size() != descriptors.rows)
             throw runtime_error("writeVLFeatFileBin: keypoints number != descriptors number");
     
-        ofstream ofs (filepath.c_str(), ios::binary);
+        std::ofstream ofs (filepath.c_str(), ios::binary);
         if (!ofs) throw runtime_error("evg::writeVLFeatFileBin: cannot open file for bin writing");
         
         for (int row = 0; row < descriptors.rows; ++row)
@@ -302,7 +302,7 @@ bool readUbcFileAscii (const std::string& filepath,
                        std::vector<cv::KeyPoint>& keypoints, cv::Mat& descriptors)
 {
     try {
-        ifstream ifs (filepath.c_str());
+        std::ifstream ifs (filepath.c_str());
         if (!ifs) throw runtime_error("evg::readUbcFileAscii: cannot open file of ubc format");
         
         // clear
@@ -384,7 +384,7 @@ bool writeUbcFileAscii  (const std::string& filepath,
         if (descriptors.type() != CV_8U)
             throw runtime_error("evg::writeUbcFileAscii: descriptors Mat type is not CV_8U");
     
-        ofstream ofs (filepath.c_str());
+        std::ofstream ofs (filepath.c_str());
         if (!ofs) throw runtime_error("evg::writeUbcFileAscii: cannot open file for ascii writing");
         
         // write number of keypoints and descriptor size
@@ -420,7 +420,7 @@ bool readUbcFileBin (const std::string& filepath,
     const int DescrSize = 128;
     
     try {
-        ifstream ifs (filepath.c_str(), ios::binary);
+        std::ifstream ifs (filepath.c_str(), ios::binary);
         if (!ifs) throw runtime_error("evg::readUbcFile: cannot open file of ubc format");
         
         // clear
@@ -519,7 +519,7 @@ bool writeUbcFileBin (const std::string& filepath,
         if (keypoints.size() != descriptors.rows)
             throw runtime_error("writeUbcFileBin: keypoints number != descriptors number");
     
-        ofstream ofs (filepath.c_str(), ios::binary);
+        std::ofstream ofs (filepath.c_str(), ios::binary);
         if (!ofs) throw runtime_error("evg::writeUbcFileBin: cannot open file for bin writing");
         
         // header
@@ -603,7 +603,7 @@ bool writeVsfmMatches (const string& filepath, const string& imName1, const stri
                        const vector<DMatch>& matches)
 {
     try {
-        ofstream ofs (filepath.c_str(), ios::binary);
+        std::ofstream ofs (filepath.c_str(), ios::binary);
         if (!ofs) throw runtime_error("evg::writeVsfmMatches: cannot open file for writing");
         
         // header
@@ -631,7 +631,7 @@ bool readVsfmMatches    (const string& filepath, string& imName1, string& imName
                          vector<DMatch>& matches)
 {
     try {
-        ifstream ifs (filepath.c_str());
+        std::ifstream ifs (filepath.c_str());
         if (!ifs) throw runtime_error("evg::readVsfmMatches: cannot open file: " + filepath);
         
         // header
@@ -688,7 +688,7 @@ bool writeSimpleMatches (const std::string& outFileName,
             return 0;
         }
         
-        ofstream ofs (outFilePath.string().c_str(), ios::binary);
+        std::ofstream ofs (outFilePath.string().c_str(), ios::binary);
         if (!ofs) throw runtime_error("evg::writeSimpleMatches: cannot open file for writing");
         
         // header
@@ -728,7 +728,7 @@ bool readSimpleMatches  (const std::string& filepath,
                          std::vector<cv::DMatch>& matches)
 {
     try {
-        ifstream ifs (filepath.c_str());
+        std::ifstream ifs (filepath.c_str());
         if (!ifs) throw runtime_error("evg::readSimpleMatches: cannot open file: " + filepath);
         
         string line;

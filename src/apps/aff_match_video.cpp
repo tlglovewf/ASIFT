@@ -137,7 +137,7 @@ int main(int argc, const char * argv[])
     
     // file for time output
     path outTimePath = outDirPath / outTimeName;
-    ofstream ofsTime (outTimePath.string());
+    std::ofstream ofsTime (outTimePath.string());
     ofsTime << "im1 im2 time(s)" << endl;
     
     // validate video
