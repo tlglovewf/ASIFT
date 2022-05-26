@@ -311,7 +311,7 @@ Mat dlmread (const std::string& dlmfilePath, cv::Mat matrix, int row1)
         cerr << "evg::dlmread(): Path " << p << " does not exist." << endl;
         throw exception();
     }
-    ifstream fileStream (p.string().c_str());
+    std::ifstream fileStream (p.string().c_str());
     if (!fileStream.good())
     {
         cerr << "evg::dlmread(): File " << p << " failed to open." << endl;
@@ -383,7 +383,7 @@ Mat dlmread (const std::string& dlmfilePath, cv::Mat matrix, int row1)
         cerr << "evg::dlmread(): Path " << p << " does not exist." << endl;
         throw exception();
     }
-    ifstream fileStream (p.string().c_str());
+    std::ifstream fileStream (p.string().c_str());
     if (!fileStream.good())
     {
         cerr << "evg::dlmread(): File " << p << " failed to open." << endl;
@@ -467,7 +467,7 @@ void dlmwrite (const std::string& dlmfilePath, const Mat& _matrix)
     }
 
     // open file
-    ofstream ofs (p.string().c_str());
+    std::ofstream ofs (p.string().c_str());
     if (!ofs.good())
     {
         cerr << "evg::dlmwrite(): File " << p << " failed to open." << endl;
@@ -517,7 +517,7 @@ void saveMat ( const string& filename, const Mat& M)
             cerr << "evg::saveMat(): matrix is empty" << endl;
             throw exception();
         }
-        ofstream out(p.string().c_str(), ios::out|ios::binary);
+        std::ofstream out(p.string().c_str(), ios::out|ios::binary);
         if (!out)
         {
             cerr << "evg::saveMat(): cannot open file for writing" << endl;
@@ -575,7 +575,7 @@ Mat readMat( const string& filename)
             cerr << "evg::dlmread(): Path " << p << " does not exist." << endl;
             throw exception();
         }
-        ifstream in (p.string().c_str(), ios::in|ios::binary);
+        std::ifstream in (p.string().c_str(), ios::in|ios::binary);
         if (!in)
         {
             cerr << "evg::readMat(): cannot open file " << p << " for reading" << endl;
